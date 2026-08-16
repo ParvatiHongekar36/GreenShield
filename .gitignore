@@ -1,0 +1,27 @@
+# Node / React
+frontend/node_modules/
+frontend/dist/
+
+# Java / Maven
+backend/target/
+
+# Python
+ml-model/__pycache__/
+ml-model/*.pyc
+
+# ML model files (large binary files, regenerate with train_model.py)
+ml-model/*.pkl
+
+# Large zip files
+*.zip
+
+# Sensitive config
+backend/src/main/resources/application.properties
+
+# IDE
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db

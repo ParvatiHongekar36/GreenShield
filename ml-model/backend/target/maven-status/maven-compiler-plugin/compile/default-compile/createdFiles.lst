@@ -1,0 +1,4 @@
+com\example\greenshield\service\PredictionService.class
+com\example\greenshield\controller\HealthController.class
+com\example\greenshield\controller\PredictionController.class
+com\example\greenshield\GreenShieldApplication.class
