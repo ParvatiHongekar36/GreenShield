@@ -87,7 +87,7 @@ Create a database named greenshield_db in MySQL. Tables are auto-created by Spri
 - AQI values from OpenWeatherMap's free tier are limited to a 1–5 category scale and are converted to approximate real-world AQI figures
 - Currently supports Flood and Wildfire prediction only
 - Runs locally; not yet deployed to a public server
-
+- Browser-based geolocation (`navigator.geolocation`) can be inaccurate on devices without GPS hardware, as it relies on WiFi/IP-based estimation. A manual location search is provided as a fallback for this reason.
 ---
 
 ## Future Scope
