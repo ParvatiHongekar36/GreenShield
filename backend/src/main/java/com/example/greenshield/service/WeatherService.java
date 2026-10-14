@@ -14,6 +14,18 @@ public class WeatherService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public Map<String, Object> getForecast(double lat, double lon) {
+        String url = String.format(
+                "https://api.openweathermap.org/data/2.5/forecast?lat=%s&lon=%s&appid=%s&units=metric&cnt=8",
+                lat, lon, apiKey
+        );
+        return restTemplate.getForObject(url, Map.class);
+    }
+
     public Map<String, Object> getWeather(double lat, double lon) {
 
         String url = String.format(

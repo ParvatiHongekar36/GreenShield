@@ -11,18 +11,21 @@ public class PredictionService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public String getPrediction(double temperature, double humidity, double rainfall, double aqi) {
+    public String getPrediction(double temperature, double humidity, double rainfall, double aqi, double windSpeed, Double elevation) {
 
         String url = "http://localhost:5000/predict";
 
+        String elevationStr = elevation != null ? String.valueOf(elevation) : "null";
         String requestBody = String.format("""
                 {
                     "temperature": %.2f,
                     "humidity": %.2f,
                     "rainfall": %.2f,
-                    "aqi": %.2f
+                    "aqi": %.2f,
+                    "windSpeed": %.2f,
+                    "elevation": %s
                 }
-                """, temperature, humidity, rainfall, aqi);
+                """, temperature, humidity, rainfall, aqi, windSpeed, elevationStr);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

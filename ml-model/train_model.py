@@ -61,7 +61,9 @@ df = pd.DataFrame({
     'flood_risk': flood_risk,
     'wildfire_risk': wildfire_risk,
 })
-
+# Export the dataset for documentation/research purposes
+df.to_csv('greenshield_dataset.csv', index=False)
+print("Dataset exported to greenshield_dataset.csv")
 # ============================================================
 # STEP 2: Split into training and testing sets
 # ============================================================
@@ -125,3 +127,12 @@ print("Flood model saved successfully!")
 print("Wildfire model saved successfully!")
 print(f"Trained on {NUM_SAMPLES} synthetic samples ({len(X_train)} train / {len(X_test)} test).")
 print("Models are ready.")
+
+
+
+
+
+
+
+
+

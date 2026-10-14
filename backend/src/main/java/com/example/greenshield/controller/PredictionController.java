@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = {"http://localhost:3001", "https://localhost:3001"})
 @RestController
 public class PredictionController {
 
@@ -29,9 +29,7 @@ public class PredictionController {
     @GetMapping("/api/history")
     public List<Prediction> getHistory() {
         List<Prediction> all = predictionRepository.findAll();
-        // Return most recent first
         java.util.Collections.reverse(all);
-        // Limit to the last 10 for a clean dashboard view
         if (all.size() > 10) {
             return all.subList(0, 10);
         }
@@ -45,15 +43,15 @@ public class PredictionController {
                 weatherRequest.getTemperature(),
                 weatherRequest.getHumidity(),
                 weatherRequest.getRainfall(),
-                weatherRequest.getAqi()
+                weatherRequest.getAqi(),
+                weatherRequest.getWindSpeed(),
+                weatherRequest.getElevation()
         );
 
-        // Parse Flask's JSON response to extract the risk levels
         var responseNode = objectMapper.readTree(flaskResponse);
         String floodRisk = responseNode.get("floodRisk").asText();
         String wildfireRisk = responseNode.get("wildfireRisk").asText();
 
-        // Save this prediction to the database
         Prediction prediction = new Prediction();
         prediction.setLatitude(weatherRequest.getLat());
         prediction.setLongitude(weatherRequest.getLon());
@@ -74,6 +72,8 @@ public class PredictionController {
         private double humidity;
         private double rainfall;
         private double aqi;
+        private double windSpeed;
+        private Double elevation;
         private double lat;
         private double lon;
 
@@ -88,6 +88,12 @@ public class PredictionController {
 
         public double getAqi() { return aqi; }
         public void setAqi(double aqi) { this.aqi = aqi; }
+
+        public double getWindSpeed() { return windSpeed; }
+        public void setWindSpeed(double windSpeed) { this.windSpeed = windSpeed; }
+
+        public Double getElevation() { return elevation; }
+        public void setElevation(Double elevation) { this.elevation = elevation; }
 
         public double getLat() { return lat; }
         public void setLat(double lat) { this.lat = lat; }
