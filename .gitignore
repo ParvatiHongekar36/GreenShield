@@ -10,7 +10,7 @@ ml-model/__pycache__/
 ml-model/*.pyc
 
 # ML model files (large binary files, regenerate with train_model.py)
-ml-model/*.pkl
+
 
 # Large zip files
 *.zip
