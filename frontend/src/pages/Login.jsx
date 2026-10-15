@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import backgroundImage from "../assets/greenshield-bg.png";
 
-const API = "http://localhost:8080";
+const API = "https://greenshield-2.onrender.com";
 
 const css = `
 * {

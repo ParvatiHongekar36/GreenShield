@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-@CrossOrigin(origins = {"http://localhost:3001", "https://localhost:3001"})
+@CrossOrigin(origins = {"http://localhost:3001", "https://localhost:3001", "https://YOUR-VERCEL-URL.vercel.app"})
 @RestController
 public class EarthquakeController {
 

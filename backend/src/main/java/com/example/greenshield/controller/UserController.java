@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-@CrossOrigin(origins = {"http://localhost:3001", "https://localhost:3001"})
-@RestController
+@CrossOrigin(origins = {"http://localhost:3001", "https://localhost:3001", "https://YOUR-VERCEL-URL.vercel.app"})
 @RequestMapping("/api/users")
 public class UserController {
 
