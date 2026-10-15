@@ -13,7 +13,7 @@ public class PredictionService {
 
     public String getPrediction(double temperature, double humidity, double rainfall, double aqi, double windSpeed, Double elevation) {
 
-        String url = "http://localhost:5000/predict";
+       String url = System.getenv().getOrDefault("ML_SERVICE_URL", "http://localhost:5000") + "/predict";
 
         String elevationStr = elevation != null ? String.valueOf(elevation) : "null";
         String requestBody = String.format("""
